@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assistant 功能测试页面</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-area {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: inherit;
+            resize: vertical;
+        }
+        textarea {
+            min-height: 100px;
+        }
+        .contenteditable {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 10px;
+            min-height: 100px;
+            background-color: white;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #4285f4;
+            padding-bottom: 10px;
+        }
+        .instruction {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            border-left: 4px solid #2196f3;
+        }
+    </style>
+</head>
+<body>
+    <h1>🤖 AI Language Assistant 功能测试</h1>
+    
+    <div class="instruction">
+        <strong>使用说明：</strong>
+        <ol>
+            <li>确保已安装并启用 AI Assistant 扩展</li>
+            <li>在扩展设置中配置 API 密钥或使用免费试用</li>
+            <li>选中下面任意文本框中的文字，点击出现的蓝色图标</li>
+            <li>测试重写和语气调整功能</li>
+        </ol>
+    </div>
+
+    <div class="test-area">
+        <h2>📝 测试区域 1: 文本框 (Textarea)</h2>
+        <textarea placeholder="在这里输入一些文字，然后选中它们来测试重写和语气调整功能...">这是一个测试句子，用来验证重写功能是否正常工作。</textarea>
+    </div>
+
+    <div class="test-area">
+        <h2>✏️ 测试区域 2: 输入框 (Input)</h2>
+        <input type="text" value="这个句子需要调整语气变得更正式一些。" placeholder="输入文字进行测试...">
+    </div>
+
+    <div class="test-area">
+        <h2>📄 测试区域 3: 可编辑内容 (ContentEditable)</h2>
+        <div class="contenteditable" contenteditable="true">
+            这是一个可编辑的div元素。你可以选中这些文字来测试AI助手的重写和语气调整功能。试试看选中这段话，然后点击出现的蓝色图标。
+        </div>
+    </div>
+
+    <div class="test-area">
+        <h2>🌍 测试区域 4: 英文内容测试</h2>
+        <textarea placeholder="Test English content here...">This is a simple sentence that can be rewritten in different ways. Try selecting this text to test the rewrite functionality.</textarea>
+    </div>
+
+    <div class="test-area">
+        <h2>📋 测试说明</h2>
+        <div class="instruction">
+            <h3>重写功能测试：</h3>
+            <ul>
+                <li>选中任意文字</li>
+                <li>点击蓝色图标</li>
+                <li>选择"重写 (Rewrite)"</li>
+                <li>应该会显示一个浮窗，包含3个不同的重写版本</li>
+                <li>点击任意版本可以替换原文</li>
+            </ul>
+            
+            <h3>语气调整功能测试：</h3>
+            <ul>
+                <li>选中任意文字</li>
+                <li>点击蓝色图标</li>
+                <li>选择"调整语气 (Tone) ▸"</li>
+                <li>选择一种语气（Formal、Casual、Fluent、Reasoning）</li>
+                <li>应该会显示一个浮窗，包含调整后的文本</li>
+                <li>点击"应用此版本"可以替换原文</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // 简单的测试脚本，用于验证页面交互
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('AI Assistant 测试页面已加载');
+            
+            // 为所有可编辑元素添加焦点样式
+            const editableElements = document.querySelectorAll('textarea, input[type="text"], [contenteditable="true"]');
+            editableElements.forEach(element => {
+                element.addEventListener('focus', function() {
+                    this.style.borderColor = '#4285f4';
+                    this.style.boxShadow = '0 0 0 2px rgba(66, 133, 244, 0.2)';
+                });
+                
+                element.addEventListener('blur', function() {
+                    this.style.borderColor = '#ccc';
+                    this.style.boxShadow = 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

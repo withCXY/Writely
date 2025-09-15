@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In-Place Translation Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section {
+            border: 2px solid #ddd;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+        }
+        .editable-section {
+            border: 2px solid #4285f4;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+        .info {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #4285f4;
+            padding-bottom: 10px;
+        }
+        .highlight {
+            background-color: #fff3cd;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚀 In-Place Translation Test</h1>
+    
+    <div class="info success">
+        <h3>✨ New Feature: Direct Read-only Text Translation</h3>
+        <p><strong>Enhancement:</strong> Now you can translate read-only text directly in place, just like editable text!</p>
+        <ul>
+            <li>🎯 <strong>Direct Replacement</strong>: Selected text is replaced with translation</li>
+            <li>🔄 <strong>Same Menu</strong>: All text types now show the same menu options</li>
+            <li>⚡ <strong>Instant Results</strong>: No popup windows, immediate translation</li>
+            <li>🛡️ <strong>Fallback Support</strong>: If direct replacement fails, shows popup as backup</li>
+        </ul>
+    </div>
+
+    <h2>🧪 Test Areas</h2>
+    
+    <div class="highlight">
+        <strong>Instructions:</strong> Select any text below and use "Translate ▸" to see direct in-place translation!
+    </div>
+    
+    <h3>1. Read-only Text (Now supports direct translation!)</h3>
+    
+    <div class="test-section">
+        <h4>🇺🇸 English Text</h4>
+        <p>Hello world! This is a test of the new in-place translation feature for read-only text. Select this sentence and translate it to see the magic happen - the text should be replaced directly without any popup!</p>
+        
+        <p>The quick brown fox jumps over the lazy dog. This pangram contains every letter of the English alphabet and is perfect for testing translation functionality.</p>
+    </div>
+
+    <div class="test-section">
+        <h4>🇨🇳 Chinese Text</h4>
+        <p>你好世界！这是只读文本直接翻译功能的测试。选择这段文字并翻译它，你会看到文本直接在原位置被替换，而不是显示弹出窗口。</p>
+        
+        <p>这是一个革命性的改进，让用户可以直接编辑和翻译网页上的任何文本内容。</p>
+    </div>
+
+    <div class="test-section">
+        <h4>🇪🇸 Spanish Text</h4>
+        <p>¡Hola mundo! Esta es una prueba de la nueva función de traducción directa para texto de solo lectura. Selecciona esta oración y tradúcela para ver cómo el texto se reemplaza directamente en su lugar.</p>
+        
+        <p>Esta funcionalidad permite a los usuarios traducir cualquier contenido web de manera instantánea y natural.</p>
+    </div>
+
+    <div class="test-section">
+        <h4>🇯🇵 Japanese Text</h4>
+        <p>こんにちは世界！これは読み取り専用テキストの新しいインプレース翻訳機能のテストです。この文を選択して翻訳すると、ポップアップではなく、テキストが直接その場で置き換えられるのを見ることができます。</p>
+        
+        <p>この機能により、ユーザーはウェブページ上のあらゆるテキストを直接編集・翻訳できるようになります。</p>
+    </div>
+
+    <h3>2. Editable Text (Same behavior as before)</h3>
+    
+    <textarea class="editable-section" rows="4" style="width: 100%; resize: vertical;">
+This is editable text in a textarea. The translation behavior here remains the same - direct replacement of selected text. Try translating this text to verify consistency.
+    </textarea>
+    
+    <div class="editable-section" contenteditable="true">
+        This is a contenteditable div. Translation should work the same way as before - direct text replacement. The new enhancement doesn't change the behavior for editable elements.
+    </div>
+
+    <h3>3. Mixed Content Test</h3>
+    
+    <div class="test-section">
+        <p>This paragraph contains <strong>bold text</strong>, <em>italic text</em>, and <a href="#">links</a>. Test translation on different parts to see how the enhanced function handles HTML structure.</p>
+        
+        <ul>
+            <li>First list item with translatable content</li>
+            <li>Second item: 这是中文内容</li>
+            <li>Third item: Contenido en español</li>
+        </ul>
+    </div>
+
+    <div class="info">
+        <h3>🔍 Technical Implementation</h3>
+        <p>The new <code>replaceSelectedTextInPlace()</code> function uses multiple strategies:</p>
+        <ol>
+            <li><strong>Range-based replacement</strong>: Uses saved selection range with execCommand</li>
+            <li><strong>Input/Textarea handling</strong>: Direct value manipulation for form elements</li>
+            <li><strong>ContentEditable support</strong>: innerHTML replacement for editable divs</li>
+            <li><strong>DOM text node replacement</strong>: Direct textContent manipulation for read-only text</li>
+            <li><strong>Range deleteContents/insertNode</strong>: Advanced DOM manipulation</li>
+            <li><strong>Parent innerHTML replacement</strong>: Fallback for complex structures</li>
+            <li><strong>Popup fallback</strong>: Shows translation popup if all methods fail</li>
+        </ol>
+        
+        <h3>✅ Expected Results</h3>
+        <ul>
+            <li><strong>Read-only text</strong>: Direct replacement in place (new behavior)</li>
+            <li><strong>Editable text</strong>: Direct replacement (unchanged behavior)</li>
+            <li><strong>Menu consistency</strong>: Same options for all text types</li>
+            <li><strong>Fallback support</strong>: Popup if direct replacement fails</li>
+        </ul>
+    </div>
+
+    <script>
+        console.log('In-place translation test page loaded');
+        
+        // Monitor successful translations
+        let translationCount = 0;
+        
+        // Listen for translation completion notifications
+        document.addEventListener('DOMNodeInserted', function(e) {
+            if (e.target.textContent && e.target.textContent.includes('Translation completed')) {
+                translationCount++;
+                console.log(`✅ Translation #${translationCount} completed successfully`);
+            }
+        });
+        
+        // Debug selection for testing
+        document.addEventListener('selectionchange', function() {
+            const selection = window.getSelection();
+            const selectedText = selection.toString().trim();
+            
+            if (selectedText && selectedText.length > 5) {
+                const range = selection.getRangeAt(0);
+                const element = range.commonAncestorContainer.nodeType === Node.TEXT_NODE 
+                    ? range.commonAncestorContainer.parentElement 
+                    : range.commonAncestorContainer;
+                
+                console.log('🎯 Selection for in-place translation:');
+                console.log('  Text:', selectedText.substring(0, 40) + '...');
+                console.log('  Element:', element.tagName, element.className);
+                console.log('  Range valid:', range.toString() === selectedText);
+            }
+        });
+    </script>
+</body>
+</html>
