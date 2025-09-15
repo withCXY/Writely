@@ -63,6 +63,7 @@ This is a Chrome extension designed to help non-native English speakers write mo
 ├── popup.js              # Popup logic
 ├── styles.css            # UI styles
 ├── icons/                # Extension icons
+<<<<<<< HEAD
 │   ├── CAT.png           # Original icon
 │   ├── icon_14.png
 │   ├── icon_16.png
@@ -73,6 +74,12 @@ This is a Chrome extension designed to help non-native English speakers write mo
 │   ├── icon_64.png
 │   ├── icon_96.png
 │   └── icon_128.png
+=======
+│   ├── icon16.png
+│   ├── icon32.png
+│   ├── icon48.png
+│   └── icon128.png
+>>>>>>> origin/main
 └── README.md             # This file
 ```
 
