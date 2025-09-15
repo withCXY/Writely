@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assistant Feature Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-area {
+            border: 2px solid #ddd;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            min-height: 80px;
+        }
+        .info {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #4285f4;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚀 AI Assistant Feature Test</h1>
+    
+    <div class="info">
+        <h3>✨ New Version Features:</h3>
+        <ul>
+            <li>🎯 <strong>Simplified Interaction</strong>: Tone adjustment directly replaces text, no confirmation needed</li>
+            <li>🔄 <strong>Reliable Text Replacement</strong>: Ensures selection is maintained with multiple fallback methods</li>
+            <li>⚡ <strong>Streamlined Code</strong>: Removed complex special handling logic</li>
+            <li>🎨 <strong>Better UI</strong>: Clear menus and option displays with original styling</li>
+            <li>🔢 <strong>Three Rewrite Options</strong>: Always shows exactly 3 rewrite alternatives</li>
+        </ul>
+    </div>
+
+    <h2>Test Areas</h2>
+    
+    <h3>1. Textarea Test</h3>
+    <textarea class="test-area" placeholder="Enter text here for testing...">
+This is test text in a textarea. Please select this text and use the AI Assistant features. The new version should accurately replace the selected text.
+    </textarea>
+    
+    <h3>2. ContentEditable Test</h3>
+    <div class="test-area" contenteditable="true">
+        This is an editable div element. Select this text and test various features. The new implementation ensures selection information is not lost.
+    </div>
+    
+    <h3>3. Input Test</h3>
+    <input type="text" class="test-area" value="This is text in an input element, test selection and replacement functionality." style="width: 100%; padding: 10px;">
+    
+    <h3>4. Read-only Text Test</h3>
+    <div class="test-area" style="background-color: #f8f9fa;">
+        This is read-only text. Select this text for translation testing, it should display translation results instead of replacing the original text.
+    </div>
+
+    <div class="info">
+        <h3>🧪 Test Steps:</h3>
+        <ol>
+            <li><strong>Select Text</strong>: Select a portion of text in any area above</li>
+            <li><strong>Click Icon</strong>: Click the appearing AI Assistant icon</li>
+            <li><strong>Choose Feature</strong>:
+                <ul>
+                    <li>🔄 <strong>Rewrite</strong>: Generates 3 rewrite options to choose from</li>
+                    <li>🎭 <strong>Tone</strong>: Select tone and text is directly replaced</li>
+                    <li>🌐 <strong>Translate</strong>: Translate to specified language</li>
+                    <li>❌ <strong>Close</strong>: Close the extension menu</li>
+                </ul>
+            </li>
+            <li><strong>Verify Results</strong>: Check if text is correctly replaced</li>
+        </ol>
+        
+        <h3>✅ Expected Behavior:</h3>
+        <ul>
+            <li><strong>Rewrite Feature</strong>: Shows exactly 3 options, clicking any option directly replaces text</li>
+            <li><strong>Tone Adjustment</strong>: Select tone and text is directly replaced, no confirmation step</li>
+            <li><strong>Translation Feature</strong>: Editable text is directly replaced, read-only text shows results</li>
+            <li><strong>Error Handling</strong>: If replacement fails, automatically uses clipboard fallback</li>
+            <li><strong>Close Function</strong>: Menu includes close option to hide the interface</li>
+        </ul>
+    </div>
+
+    <script>
+        console.log('AI Assistant test page loaded');
+        
+        // Listen for selection changes for debugging
+        document.addEventListener('selectionchange', function() {
+            const selection = window.getSelection();
+            const selectedText = selection.toString().trim();
+            if (selectedText && selectedText.length > 3) {
+                console.log('Selected text:', selectedText.substring(0, 50) + (selectedText.length > 50 ? '...' : ''));
+            }
+        });
+    </script>
+</body>
+</html>

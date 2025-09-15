@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rewrite Function Fix Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section {
+            border: 2px solid #ddd;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+        }
+        .info {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .fix-info {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 1px solid #c3e6cb;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #4285f4;
+            padding-bottom: 10px;
+        }
+        .sample-text {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            margin: 10px 0;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔧 Rewrite Function Fix Test</h1>
+    
+    <div class="fix-info">
+        <h3>✅ Issue Fixed: Duplicate Rewrite Options</h3>
+        <p><strong>Problem:</strong> Rewrite function was generating 3 identical options</p>
+        <p><strong>Root Cause:</strong> Using single rewrite prompt + duplication logic</p>
+        <p><strong>Solution:</strong> Now uses alternatives prompt that generates 3 distinct versions</p>
+        
+        <h4>Technical Changes:</h4>
+        <ul>
+            <li>🔄 <strong>Prompt Update:</strong> Uses <code>alternatives</code> prompt instead of <code>rewrite</code></li>
+            <li>🚫 <strong>Removed Duplication:</strong> No longer duplicates options to reach 3</li>
+            <li>📝 <strong>Enhanced Instructions:</strong> Clearer requirements for distinct alternatives</li>
+            <li>🎯 <strong>Better Parsing:</strong> Improved option separation and filtering</li>
+        </ul>
+    </div>
+
+    <h2>🧪 Test Samples</h2>
+    
+    <p>Select any of the text samples below and use the <strong>Rewrite</strong> function to test the fix:</p>
+    
+    <div class="test-section">
+        <h3>Sample 1: Business Communication</h3>
+        <div class="sample-text">
+            I wanted to reach out and let you know that we need to discuss the project timeline. There are some issues that have come up that we should probably talk about soon.
+        </div>
+        <p><strong>Expected:</strong> 3 different versions - concise, detailed, and alternative vocabulary</p>
+    </div>
+
+    <div class="test-section">
+        <h3>Sample 2: Technical Description</h3>
+        <div class="sample-text">
+            The system processes data by taking input from users and then running it through various algorithms to produce the final output that gets displayed on the screen.
+        </div>
+        <p><strong>Expected:</strong> 3 distinct rewrites with different approaches and complexity levels</p>
+    </div>
+
+    <div class="test-section">
+        <h3>Sample 3: Casual Writing</h3>
+        <div class="sample-text">
+            This new feature is really cool and I think it's going to help a lot of people solve their problems more easily than before.
+        </div>
+        <p><strong>Expected:</strong> 3 unique versions with varying formality and detail</p>
+    </div>
+
+    <div class="test-section">
+        <h3>Sample 4: Complex Sentence</h3>
+        <div class="sample-text">
+            Although the implementation was challenging due to various technical constraints and time limitations, the team managed to deliver a solution that meets most of the requirements while maintaining acceptable performance standards.
+        </div>
+        <p><strong>Expected:</strong> 3 different structural approaches to the same information</p>
+    </div>
+
+    <div class="test-section">
+        <h3>Sample 5: Short Text</h3>
+        <div class="sample-text">
+            The meeting has been postponed until next week.
+        </div>
+        <p><strong>Expected:</strong> 3 variations even for short text</p>
+    </div>
+
+    <div class="info">
+        <h3>🔍 Testing Instructions:</h3>
+        <ol>
+            <li><strong>Select text</strong> from any sample above</li>
+            <li><strong>Click AI Assistant icon</strong></li>
+            <li><strong>Choose "Rewrite"</strong> from the menu</li>
+            <li><strong>Wait for 3 options</strong> to appear</li>
+            <li><strong>Verify uniqueness</strong>: Each option should be distinctly different</li>
+            <li><strong>Test multiple samples</strong> to ensure consistency</li>
+        </ol>
+        
+        <h3>✅ Success Criteria:</h3>
+        <ul>
+            <li><strong>3 Different Options:</strong> Each alternative should be unique</li>
+            <li><strong>Varying Approaches:</strong> 
+                <ul>
+                    <li>Option 1: More concise and direct</li>
+                    <li>Option 2: More detailed and explanatory</li>
+                    <li>Option 3: Different vocabulary and structure</li>
+                </ul>
+            </li>
+            <li><strong>Maintained Meaning:</strong> All versions should convey the same core message</li>
+            <li><strong>Quality Writing:</strong> Each option should be well-written and natural</li>
+        </ul>
+        
+        <h3>🚨 What to Look For:</h3>
+        <ul>
+            <li>❌ <strong>Identical options</strong> (this was the bug)</li>
+            <li>❌ <strong>Very similar phrasing</strong> across options</li>
+            <li>❌ <strong>Only minor word changes</strong> between versions</li>
+            <li>✅ <strong>Genuinely different approaches</strong> to expressing the same idea</li>
+        </ul>
+    </div>
+
+    <div class="info">
+        <h3>🔧 Technical Details:</h3>
+        
+        <h4>Before (Broken):</h4>
+        <pre><code>// Used single rewrite prompt
+const rewritePrompt = polishingPrompts.rewrite.replace('{text}', request.text);
+
+// Then duplicated to get 3 options
+while (alternatives.length < 3) {
+    alternatives.push(alternatives[0]); // Same content!
+}</code></pre>
+        
+        <h4>After (Fixed):</h4>
+        <pre><code>// Uses alternatives prompt for 3 distinct versions
+const rewritePrompt = polishingPrompts.alternatives.replace('{text}', request.text);
+
+// No duplication, just filter empty options
+alternatives = alternatives.filter(alt => alt && alt.trim().length > 0);</code></pre>
+        
+        <h4>Enhanced Prompt:</h4>
+        <p>The new prompt specifically requests:</p>
+        <ul>
+            <li>Version 1: More concise and direct</li>
+            <li>Version 2: More detailed and explanatory</li>
+            <li>Version 3: Different vocabulary and sentence structure</li>
+        </ul>
+    </div>
+
+    <script>
+        console.log('Rewrite fix test page loaded');
+        
+        // Monitor rewrite attempts
+        let rewriteCount = 0;
+        
+        document.addEventListener('selectionchange', function() {
+            const selection = window.getSelection();
+            const selectedText = selection.toString().trim();
+            
+            if (selectedText && selectedText.length > 10) {
+                console.log('📝 Text selected for rewrite test:', selectedText.substring(0, 50) + '...');
+            }
+        });
+        
+        // Log when rewrite options are displayed
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'childList') {
+                    mutation.addedNodes.forEach(function(node) {
+                        if (node.id === 'ai-assistant-rewrite' || node.id === 'ai-assistant-alternatives') {
+                            rewriteCount++;
+                            console.log(`🔄 Rewrite attempt #${rewriteCount} - Check for 3 unique options`);
+                            
+                            // Check for alternative items after a short delay
+                            setTimeout(() => {
+                                const alternatives = node.querySelectorAll('.alternative-item');
+                                console.log(`📊 Found ${alternatives.length} alternatives`);
+                                
+                                if (alternatives.length > 1) {
+                                    const texts = Array.from(alternatives).map(alt => alt.textContent);
+                                    const uniqueTexts = new Set(texts);
+                                    
+                                    if (uniqueTexts.size === texts.length) {
+                                        console.log('✅ All alternatives are unique!');
+                                    } else {
+                                        console.log('❌ Found duplicate alternatives!');
+                                    }
+                                }
+                            }, 100);
+                        }
+                    });
+                }
+            });
+        });
+        
+        observer.observe(document.body, { childList: true, subtree: true });
+    </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assistant 修复测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .editable {
+            border: 2px solid #ddd;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            min-height: 100px;
+        }
+        .readonly {
+            background-color: #f9f9f9;
+            border: 2px solid #eee;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #4285f4;
+            padding-bottom: 10px;
+        }
+        .instructions {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>AI Assistant 功能修复测试</h1>
+    
+    <div class="instructions">
+        <h3>测试说明：</h3>
+        <ol>
+            <li>确保AI Assistant扩展已启用</li>
+            <li>选择下面的文本，点击AI Assistant图标</li>
+            <li>测试各种功能是否正常工作</li>
+        </ol>
+    </div>
+
+    <div class="test-section">
+        <h2>测试1：可编辑文本 - 完整功能</h2>
+        <div class="editable" contenteditable="true">
+            这是一段可编辑的中文文本。请选择这段文字，然后测试翻译、重写和语气调整功能。点击生成的选项应该能够正常替换原文。
+        </div>
+        <p><strong>预期行为：</strong>显示完整菜单（翻译、重写、语气调整），点击选项后应该替换原文。</p>
+    </div>
+
+    <div class="test-section">
+        <h2>测试2：只读文本 - 翻译和复制功能</h2>
+        <div class="readonly">
+            This is a read-only English text. Select this text and test the translation functionality. The translated result should be displayed in a popup window with copy option, not replacing the original text.
+        </div>
+        <p><strong>预期行为：</strong>显示简化菜单（翻译、翻译并复制），显示翻译结果弹窗而不替换原文。</p>
+    </div>
+
+    <div class="test-section">
+        <h2>测试3：输入框 - 完整功能</h2>
+        <textarea class="editable" placeholder="在这里输入一些文本进行测试...">
+这是textarea中的文本。选择这段文字测试所有功能。
+        </textarea>
+        <p><strong>预期行为：</strong>显示完整菜单，所有功能应该正常工作。</p>
+    </div>
+
+    <div class="test-section">
+        <h2>测试4：普通段落 - 只读功能</h2>
+        <p>
+            这是一个普通的段落文本，不可编辑。选择这段文字应该只显示翻译相关的功能，不应该有重写和语气调整选项。翻译结果应该显示在弹窗中，而不是替换原文。
+        </p>
+        <p><strong>预期行为：</strong>显示简化菜单（翻译、翻译并复制），显示翻译结果弹窗。</p>
+    </div>
+
+    <div class="test-section">
+        <h2>修复内容总结：</h2>
+        <ul>
+            <li><strong>问题1修复：</strong>增强了点击事件处理，添加了备用文本替换方法</li>
+            <li><strong>问题2修复：</strong>为只读文本添加了专门的翻译功能，不替换原文</li>
+            <li><strong>新增功能：</strong>翻译结果弹窗显示，支持复制到剪贴板</li>
+            <li><strong>改进：</strong>根据文本类型显示不同的菜单选项</li>
+        </ul>
+    </div>
+
+    <script>
+        // 简单的测试脚本
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('AI Assistant 测试页面已加载');
+            
+            // 检查扩展是否已加载
+            setTimeout(() => {
+                if (typeof window.getSelection !== 'undefined') {
+                    console.log('页面准备就绪，可以开始测试');
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
