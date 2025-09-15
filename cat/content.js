@@ -17,8 +17,7 @@ let isTranslating = false;
 function init() {
     chrome.storage.local.get(['extensionEnabled'], (result) => {
         if (chrome.runtime.lastError) {
-            console.log('Extension context invalidated, reloading...');
-            window.location.reload();
+            console.log('Extension context invalidated, skipping initialization');
             return;
         }
         setupEventListeners();
@@ -66,7 +65,11 @@ function handleTextSelection(event) {
 
     setTimeout(() => {
         chrome.storage.local.get(['extensionEnabled'], (settings) => {
-            if (chrome.runtime.lastError || settings.extensionEnabled === false) return;
+            if (chrome.runtime.lastError) {
+                console.log('Extension context invalidated, skipping selection handling');
+                return;
+            }
+            if (settings.extensionEnabled === false) return;
 
             const selection = window.getSelection();
             const selectedText = selection.toString().trim();
@@ -213,7 +216,7 @@ function handleInput(event) {
 
         chrome.storage.local.get(['sourceLang', 'targetLang', 'translateAsYouTypeEnabled'], (settings) => {
             if (chrome.runtime.lastError) {
-                window.location.reload();
+                console.log('Extension context invalidated, skipping translation');
                 return;
             }
             if (settings.translateAsYouTypeEnabled === false) return;

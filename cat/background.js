@@ -7,10 +7,6 @@ const TRANSLATE_API_URL = "https://translation.googleapis.com/language/translate
 // Function to convert language names to language codes
 function getLanguageCode(languageName) {
     const languageMap = {
-<<<<<<< HEAD
-        'English': 'en',
-=======
->>>>>>> origin/main
         'Chinese': 'zh',
         'Spanish': 'es',
         'French': 'fr',

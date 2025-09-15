@@ -30,11 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         extensionEnabled: true,
         translateAsYouTypeEnabled: true,
 
-<<<<<<< HEAD
-        sourceLang: 'English',
-=======
         sourceLang: 'Chinese',
->>>>>>> origin/main
         targetLang: 'en',
         trialUsesRemaining: FREE_TRIAL_LIMIT,
         isTrialMode: true

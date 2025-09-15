@@ -5,17 +5,10 @@
     width: 32px;
     height: 32px;
     background-color: transparent;
-<<<<<<< HEAD
     border-radius: 50%;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     background-image: url('chrome-extension://__MSG_@@extension_id__/icons/28.png');
-=======
-    border-radius: 0%;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-    background-image: url('chrome-extension://__MSG_@@extension_id__/icons/icon48.png');
->>>>>>> origin/main
     background-size: 32px 32px;
     background-repeat: no-repeat;
     background-position: center;
