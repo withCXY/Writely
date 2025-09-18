@@ -56,7 +56,7 @@ Original: "The meeting was postponed."
 2. Open Chrome and navigate to `chrome://extensions`
 3. Turn on the "Developer mode" switch, usually located in the top-right corner
 4. Click on the "Load unpacked" button
-5. Select the folder where you saved all the project files
+5. Select the subfolder (should be "cat") where you saved all the project files
 6. "Writely" should now appear in your list of extensions
 
 ### 3. Configuration
